@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="min-h-dvh text-neutral-100 antiliased bg-neutral-950">
+      <body className="min-h-dvh flex flex-col text-neutral-100 antiliased bg-neutral-950">
         <header className="border-b border-neutral-800">
         <nav className="mx-auto max-w-5xl p-4 flex items-center gap-6">
             <Link href="/" className="font-semibold">VibeHub</Link>
@@ -22,7 +22,7 @@ export default function RootLayout({
           </nav>
         </header>
 
-          <main className="mx-auto max-w-5xl p-4">
+          <main className="mx-auto max-w-5xl p-4 flex-1 flex items-center justify-center">
         {children}
           </main>
 
