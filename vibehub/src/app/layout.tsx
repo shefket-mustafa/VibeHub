@@ -9,7 +9,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-dvh flex flex-col text-neutral-100 antiliased bg-neutral-950">
-        {/* <MatrixBackground /> */}
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)]" />
 
