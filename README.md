@@ -1,3 +1,3 @@
 # VibeHub 
 
-Currently practising and exploring Next.js with this project
+Currently practicing and exploring Next.js with this project
