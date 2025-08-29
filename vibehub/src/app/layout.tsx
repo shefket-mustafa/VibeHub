@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/LogoutButton";
 import "./globals.css";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ export default function RootLayout({
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)]" />
 
-        <header className="border-b border-neutral-800 relative z-10">
+        <header className="border-b border-neutral-800 flex  relative z-10">
           <nav className="mx-auto max-w-5xl p-4 flex items-center gap-6">
             <Link href="/" className="font-semibold">
               VibeHub
@@ -24,6 +25,14 @@ export default function RootLayout({
               Profile
             </Link>
           </nav>
+
+          <div className="mx-auto max-w-5xl p-4 flex items-center gap-6">
+            <button>
+              Toggle language
+            </button>
+
+          <LogoutButton />
+          </div>
         </header>
 
         <main className="mx-auto max-w-5xl p-4 flex-1 flex items-center justify-center relative z-10">
