@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form"
 import { LoginForm, loginSchema } from "../zod/login";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 export default function AuthPage() {
 
   const router = useRouter();
-  const params = useSearchParams();
 
   const {
     register,
