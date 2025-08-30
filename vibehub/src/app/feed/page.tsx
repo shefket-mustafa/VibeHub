@@ -9,6 +9,12 @@ type Post = {
     content: string;
     createdAt: string; // ISO
 }
+type ServerPost = {
+  _id: string;
+  authorName: string;
+  content: string;
+  createdAt: string;
+};
 
 
   export default function Feed() {
@@ -19,9 +25,9 @@ type Post = {
     useEffect(() => {
         try {
           fetch("/api/posts", {method: "GET"})
-          .then(r => r.json())
-          .then(data => {
-            const mapped = data.map((p: any) => ({
+          .then(r => r.json() as Promise<ServerPost[]>)
+          .then((data: ServerPost[]) => {
+            const mapped: Post[] = data.map((p: ServerPost) => ({
               id: p._id,
               authorName: p.authorName,
               content: p.content,
@@ -119,7 +125,7 @@ type Post = {
         </ul>
   
         {/* Load more (mock) */}
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <button
             type="button"
             disabled
@@ -128,7 +134,7 @@ type Post = {
           >
             Load more
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }
