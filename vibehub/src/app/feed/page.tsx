@@ -1,49 +1,30 @@
 "use client"
 
-import {  useState } from "react";
+import { log } from "console";
+import {  useEffect, useState } from "react";
 
 type Post = {
     id: string,
     authorName: string;
     content: string;
-    likes: number;
     createdAt: string; // ISO
 }
 
-const MOCK_POSTS: Post[] = [
-    {
-      id: "p3",
-      authorName: "nina",
-      content: "Just shipped the new gradient header ✨",
-      likes: 12,
-      createdAt: "2h"
-    },
-    {
-      id: "p2",
-      authorName: "mario",
-      content: "Dark mode forever 🌙",
-      likes: 5,
-      createdAt: "12m"
-    },
-    {
-      id: "p1",
-      authorName: "shefket",
-      content: "First post on VibeHub! 👋",
-      likes: 23,
-      createdAt: "45m", 
-    },
-  ];
-
 
   export default function FeedMock() {
-    const [posts, setPosts] = useState<Post[]>(
-      // newest first
-      [...MOCK_POSTS].sort(
-        (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)
-      )
-    );
+    const [posts, setPosts] = useState<Post[]>([]);
   
   
+    useEffect(() => {
+
+      fetch("/api/posts", {method: "GET"})
+      .then(r => r.json())
+      .then(data => {
+        console.log(data);
+        
+      })
+
+    },[])
  
   
    
@@ -81,7 +62,7 @@ const MOCK_POSTS: Post[] = [
                 <button
                   className="text-sm text-teal-400 hover:underline"
                 >
-                  ♥ {p.likes}
+                  ♥ {"5"}
                 </button>
               </div>
             </li>
