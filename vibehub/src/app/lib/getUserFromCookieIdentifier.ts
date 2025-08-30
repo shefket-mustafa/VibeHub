@@ -3,7 +3,11 @@ import "server-only"
 // “If someone tries to import this file into client code, throw an error.”
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
-export default async function getUserFromCookies() {
+
+export type AuthPayload = { userId: string; email: string };
+
+
+export default async function getUserFromCookies():Promise<AuthPayload | null> {
 
 
     const data = await cookies();
@@ -13,10 +17,16 @@ export default async function getUserFromCookies() {
     const secret = process.env.JWT_SECRET;
     if(!secret) throw new Error("Missing JWT secret!")
 
-        try{
-            return jwt.verify(token, secret);
-
-        }catch {
-            return null
-        }
+        try {
+            const decoded = jwt.verify(token, secret);
+            if (decoded && typeof decoded === "object" && "userId" in decoded && "email" in decoded) {
+                return {
+                  userId: String((decoded as any).userId),
+                  email: String((decoded as any).email),
+                };
+              }
+              return null;
+            } catch {
+              return null;
+            }
 }
