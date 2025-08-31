@@ -6,8 +6,6 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 
 export type AuthPayload = { userId: string; email: string; username: string };
 
-type TokenPayload = JwtPayload & AuthPayload;
-
 export default async function getUserFromCookies(): Promise<AuthPayload | null> {
   const data = await cookies();
   const token = data.get("token")?.value;
@@ -17,7 +15,7 @@ export default async function getUserFromCookies(): Promise<AuthPayload | null> 
   if (!secret) throw new Error("Missing JWT secret!");
 
   try {
-    const decoded = jwt.verify(token, secret) as TokenPayload;
+    const decoded = jwt.verify(token, secret) as JwtPayload & AuthPayload;
     if (
       decoded &&
       typeof decoded === "object" &&
