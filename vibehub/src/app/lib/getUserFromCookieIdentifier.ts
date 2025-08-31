@@ -17,7 +17,7 @@ export default async function getUserFromCookies(): Promise<AuthPayload | null> 
   if (!secret) throw new Error("Missing JWT secret!");
 
   try {
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, secret) as TokenPayload;
     if (
       decoded &&
       typeof decoded === "object" &&
