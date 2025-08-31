@@ -1,5 +1,7 @@
 "use client"
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import React, {  useEffect, useState } from "react";
 import timeAgo from "../lib/timeAgo";
 
@@ -37,6 +39,13 @@ type ServerPost = {
               createdAt: p.createdAt, // already ISO from API
             }));
             setPosts(mapped)
+          })
+
+          fetch("/api/currentUser", {method: "GET"})
+          .then(r => r.json())
+          .then(user => {
+            setCurrentUser(user.user.username)
+            
           })
         }catch(err){
           console.error("Network error: ", err)
@@ -93,9 +102,12 @@ type ServerPost = {
         <div className="sticky top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
 
           {/* left section tags */}
-          <div className="flex flex-col text-2xl text-white">
+          <div className="flex flex-col  p-4  ">
 
-          <p></p>
+          <div className='flex gap-3 items-center '>
+            <AccountCircleIcon />
+            <p className='text-teal-400'>{currentUser}</p>
+          </div>
 
           </div>
 
