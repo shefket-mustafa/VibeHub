@@ -37,7 +37,6 @@ Create a `.env.local` file in the project root:
 ```env
 MONGODB_URI="your-mongodb-connection-string"
 JWT_SECRET="your-secret-key"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
 ### 3.4 Run the development server
