@@ -17,6 +17,14 @@ It provides users with a seamless way to connect, share, and explore content in 
 - **Styling:** Tailwind CSS
 - **Deployment:** Vercel
 
+  ## TODOs
+-  Route guards
+-  Global state managment
+-  Dynamic routes
+-  Likes
+-  Comments
+
+
 ## 3. 🚀 Getting Started (Local Development)
 
 Follow these steps to run the project locally:
