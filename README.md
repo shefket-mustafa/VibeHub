@@ -17,6 +17,41 @@ It provides users with a seamless way to connect, share, and explore content in 
 - **Styling:** Tailwind CSS
 - **Deployment:** Vercel
 
----
+## 3. 🚀 Getting Started (Local Development)
 
-🚀 More features coming soon!
+Follow these steps to run the project locally:
+
+### 3.1 Clone the repository
+```bash
+git clone https://github.com/your-username/vibehub.git
+cd vibehub
+```
+
+### 3.2 Install dependencies
+```bash
+npm install
+```
+
+### 3.3 Configure environment variables
+Create a `.env.local` file in the project root:
+```env
+MONGODB_URI="your-mongodb-connection-string"
+JWT_SECRET="your-secret-key"
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+```
+
+### 3.4 Run the development server
+```bash
+npm run dev
+```
+
+The app will be available at **http://localhost:3000**
+
+## 4. 🌐 Live Progress
+You can check my **daily progress** here:  
+👉 [vibe-hub-kappa.vercel.app](https://vibe-hub-kappa.vercel.app)
+
+> ⚠️ Note: This is an active build—features ship frequently. 🚧
+
+## 5. 📄 License
+This project is open-source under the [MIT License](LICENSE).
