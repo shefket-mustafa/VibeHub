@@ -39,6 +39,9 @@ MONGODB_URI="your-mongodb-connection-string"
 JWT_SECRET="your-secret-key"
 ```
 
+> ⚠️ Note: You must use your own MongoDB connection string and secret key for local development.  
+> The live deployment already has these configured securely on Vercel.
+
 ### 3.4 Run the development server
 ```bash
 npm run dev
@@ -52,5 +55,18 @@ You can check my **daily progress** here:
 
 > ⚠️ Note: This is an active build—features ship frequently. 🚧
 
-## 5. 📄 License
+ ## 5. 🔑 Demo Accounts
+You can log in with the following test accounts:
+
+- **User Account**  
+  Email: `test@abv.bg`  
+  Password: `123456`
+
+- **Admin Account**  
+  Email: `admin@abv.bg`  
+  Password: `123456`
+
+---
+
+## 6. 📄 License
 This project is open-source under the [MIT License](LICENSE).
