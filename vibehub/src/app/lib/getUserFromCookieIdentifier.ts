@@ -4,7 +4,7 @@ import "server-only"
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 
-export type AuthPayload = { userId: string; email: string };
+export type AuthPayload = { userId: string; email: string, username: string };
 
 
 export default async function getUserFromCookies():Promise<AuthPayload | null> {
@@ -19,10 +19,15 @@ export default async function getUserFromCookies():Promise<AuthPayload | null> {
 
         try {
             const decoded = jwt.verify(token, secret);
-            if (decoded && typeof decoded === "object" && "userId" in decoded && "email" in decoded) {
+            if (decoded &&
+              typeof decoded === "object" &&
+              "userId" in decoded &&
+              "email" in decoded &&
+              "username" in decoded) {
                 return {
                   userId: String((decoded as any).userId),
                   email: String((decoded as any).email),
+                  username: String((decoded as any).username)
                 };
               }
               return null;

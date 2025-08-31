@@ -1,7 +1,13 @@
 "use client"
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PeopleIcon from '@mui/icons-material/People';
+import BrowseGalleryIcon from '@mui/icons-material/BrowseGallery';
+import GroupsIcon from '@mui/icons-material/Groups';
+
 import React, {  useEffect, useState } from "react";
 import timeAgo from "../lib/timeAgo";
+import Image from 'next/image';
 
 type Post = {
     id: string,
@@ -16,12 +22,19 @@ type ServerPost = {
   createdAt: string;
 };
 
+type Contact = {
+  username: string,
+  id: string
+}
+
+
 
   export default function Feed() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [content, setContent] = useState("");
     const [submitting, setSubmitting] = useState(false);
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState<string | null>(null);
+    const [allUsers, setAllUsers] = useState<Contact[]>([]);
 
     
   
@@ -38,10 +51,29 @@ type ServerPost = {
             }));
             setPosts(mapped)
           })
+
+          fetch("/api/currentUser", {method: "GET"})
+          .then(r => r.json())
+          .then(user => {
+            setCurrentUser(user.user.username)
+            
+          })
         }catch(err){
           console.error("Network error: ", err)
         }
     },[])
+
+   useEffect(() => {
+    
+      fetch("/api/allUsers")
+      .then(res => res.json())
+      .then(result => {
+        setAllUsers(result)
+      })
+      .catch(console.error)
+      
+    
+   },[])
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -90,20 +122,47 @@ type ServerPost = {
       <div className="w-full flex justify-between">
 
         {/* left section */}
-        <div className="sticky top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
+        <div className="sticky hidden md:flex flex-col top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
 
           {/* left section tags */}
-          <div className="flex flex-col text-2xl text-white">
+          <div className="flex flex-col gap-5 p-4 border-neutral-700 ">
 
-          <p></p>
+          {/* Profile tag */}
+          <div className='flex gap-3 items-center'>
+            <AccountCircleIcon />
+            <p className='text-teal-400'>{currentUser}</p>
+          </div>
 
+          {/* Friends tag */}
+          <div className='flex gap-3 items-center'>
+            <PeopleIcon />
+            <p>Friends</p>
+          </div>
+
+          {/* Memories tag */}
+          <div className='flex gap-3 items-center'>
+          <BrowseGalleryIcon />
+          <p>Memories</p>
+          </div>
+
+          {/* Groups tag */}
+          <div className='flex gap-3 items-center'>
+          <GroupsIcon />
+          <p>Groups</p>
+          </div>
+          </div>
+
+          {/* Contacts */}
+          <div className='p-4 border-t-1 border-neutral-700 decoration-0'>
+            <p className='text-xl mb-5 text-teal-400'>Contacts</p>
+          {allUsers.length === 0 ? "No users!" : allUsers.map(user => <li key={user.id}>{user.username}</li>)}
           </div>
 
         </div>
 
 
       {/* middle section */}
-      <div className="w-full max-w-xl mx-auto space-y-6">
+      <div className="w-full flex-1 max-w-xl mx-auto space-y-6">
         {/* Composer */}
         <form onSubmit={onSubmit}  className="rounded-2xl border border-neutral-800 p-4 bg-neutral-900/30">
           <textarea
@@ -159,7 +218,24 @@ type ServerPost = {
       </div>
 
 
+      {/* right section */}
+      <div className="hidden md:flex sticky top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
 
+
+         {/* right section tags */}
+         <div className="flex flex-col gap-5 p-4 border-neutral-700 border-b-1">
+
+           {/* Sponsored tag */}
+           <div className='flex flex-col gap-4 justify-center items-center'>
+            <p className='text-xl'>Sponsored</p>
+            <Image src="https://searchengineland.com/wp-content/seloads/2015/12/google-amp-fast-speed-travel-ss-1920.jpg" width={240} height={160} alt='Loading image...'/>
+            <Image src="https://miro.medium.com/v2/resize:fit:1100/1*CWFkh5z8oa6dZfn5_gkKKQ.jpeg" width={240} height={160} alt='Loading image...'/>
+            <Image src="https://www.zilliondesigns.com/blog/wp-content/uploads/Twitter-New-Logo-X.jpg" width={240} height={160} alt='Loading image...'/>
+          </div>
+
+          </div>
+
+        </div>
 
       </div>
     );
