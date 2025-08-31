@@ -23,8 +23,8 @@ Follow these steps to run the project locally:
 
 ### 3.1 Clone the repository
 ```bash
-git clone https://github.com/your-username/vibehub.git
-cd vibehub
+git clone git@github.com:shefket-mustafa/VibeHub.git
+cd VibeHub
 ```
 
 ### 3.2 Install dependencies
