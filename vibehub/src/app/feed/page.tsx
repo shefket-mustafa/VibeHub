@@ -1,6 +1,9 @@
 "use client"
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PeopleIcon from '@mui/icons-material/People';
+import BrowseGalleryIcon from '@mui/icons-material/BrowseGallery';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 import React, {  useEffect, useState } from "react";
 import timeAgo from "../lib/timeAgo";
@@ -102,11 +105,30 @@ type ServerPost = {
         <div className="sticky top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
 
           {/* left section tags */}
-          <div className="flex flex-col  p-4  ">
+          <div className="flex flex-col gap-5 p-4 border-neutral-700 border-b-1">
 
-          <div className='flex gap-3 items-center '>
+          {/* Profile tag */}
+          <div className='flex gap-3 items-center'>
             <AccountCircleIcon />
             <p className='text-teal-400'>{currentUser}</p>
+          </div>
+
+          {/* Friends tag */}
+          <div className='flex gap-3 items-center'>
+            <PeopleIcon />
+            <p>Friends</p>
+          </div>
+
+          {/* Memories tag */}
+          <div className='flex gap-3 items-center'>
+          <BrowseGalleryIcon />
+          <p>Memories</p>
+          </div>
+
+          {/* Groups tag */}
+          <div className='flex gap-3 items-center'>
+          <GroupsIcon />
+          <p>Groups</p>
           </div>
 
           </div>
