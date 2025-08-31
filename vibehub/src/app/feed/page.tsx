@@ -21,6 +21,9 @@ type ServerPost = {
     const [posts, setPosts] = useState<Post[]>([]);
     const [content, setContent] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
+
+    
   
     useEffect(() => {
         try {
@@ -82,6 +85,24 @@ type ServerPost = {
    
   
     return (
+
+      //main container
+      <div className="w-full flex justify-between">
+
+        {/* left section */}
+        <div className="sticky top-20 w-[260px] min-h-screen max-w-2xl border-neutral-800 bg-neutral-800/30 space-y-6">
+
+          {/* left section tags */}
+          <div className="flex flex-col text-2xl text-white">
+
+          <p></p>
+
+          </div>
+
+        </div>
+
+
+      {/* middle section */}
       <div className="w-full max-w-xl mx-auto space-y-6">
         {/* Composer */}
         <form onSubmit={onSubmit}  className="rounded-2xl border border-neutral-800 p-4 bg-neutral-900/30">
@@ -135,6 +156,11 @@ type ServerPost = {
             Load more
           </button>
         </div> */}
+      </div>
+
+
+
+
       </div>
     );
   }
