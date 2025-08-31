@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <section className=" flex flex-col justify-center items-center text-center px-4 ">
+    <section className=" flex flex-col mx-auto justify-center items-center text-center px-4 ">
     <h1 className="text-4xl md:text-5xl font-bold mb-4">
     Welcome to <span className="text-teal-400">VibeHub</span>
       </h1>

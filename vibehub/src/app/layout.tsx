@@ -1,17 +1,27 @@
 import LogoutButton from "@/components/LogoutButton";
 import "./globals.css";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "VibeHub",
+  icons: { icon: "/icon.png" }, 
+ 
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en">
+      
       <body className="min-h-dvh flex flex-col text-neutral-100 antiliased bg-neutral-950">
-        <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900 z-10" />
-        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)] z-10" />
+        <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900 -z-10" />
+        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)] -z-10" />
 
         <header className="border-b border-neutral-800 flex  relative z-10">
           <nav className="mx-auto max-w-5xl p-4 flex items-center gap-6">

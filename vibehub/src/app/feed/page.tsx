@@ -63,16 +63,17 @@ type Contact = {
         }
     },[])
 
-    try{
+   useEffect(() => {
+    
       fetch("/api/allUsers")
       .then(res => res.json())
       .then(result => {
         setAllUsers(result)
       })
-
-    }catch(err){
-
-    }
+      .catch(console.error)
+      
+    
+   },[])
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -226,7 +227,7 @@ type Contact = {
 
            {/* Sponsored tag */}
            <div className='flex flex-col gap-4 justify-center items-center'>
-            <p className='text-2xl'>Sponsored</p>
+            <p className='text-xl'>Sponsored</p>
             <Image src="https://searchengineland.com/wp-content/seloads/2015/12/google-amp-fast-speed-travel-ss-1920.jpg" width={240} height={160} alt='Loading image...'/>
             <Image src="https://miro.medium.com/v2/resize:fit:1100/1*CWFkh5z8oa6dZfn5_gkKKQ.jpeg" width={240} height={160} alt='Loading image...'/>
             <Image src="https://www.zilliondesigns.com/blog/wp-content/uploads/Twitter-New-Logo-X.jpg" width={240} height={160} alt='Loading image...'/>
