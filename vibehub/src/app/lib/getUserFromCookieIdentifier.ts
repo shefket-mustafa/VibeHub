@@ -2,7 +2,8 @@ import "server-only";
 // a tiny safeguard that tells Next.js:
 // “If someone tries to import this file into client code, throw an error.”
 import { cookies } from "next/headers";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import { JwtPayload } from "jsonwebtoken";
 
 export type AuthPayload = { userId: string; email: string; username: string };
 
