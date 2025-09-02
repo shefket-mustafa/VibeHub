@@ -1,14 +1,12 @@
-"use client"
 
 import Link from "next/link"
 import { GrLanguage } from "react-icons/gr"
 import LogoutButton from "./LogoutButton"
-import { AuthPayload } from "@/app/lib/getUserFromCookieIdentifier"
+import getUserFromCookies from "@/app/lib/getUserFromCookieIdentifier";
 
-    type NavProps = { user: AuthPayload | null}
 
-export default function Navbar({ user }: NavProps) {
-
+export default async function Navbar() {
+  const user = await getUserFromCookies();
     
 
 

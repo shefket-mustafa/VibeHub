@@ -1,7 +1,10 @@
+export const dynamic = "force-dynamic";
+
 import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import getUserFromCookies from "./lib/getUserFromCookieIdentifier";
+import { headers } from "next/headers";
+
 
 export const metadata: Metadata = {
   title: "VibeHub",
@@ -14,9 +17,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-const user = await getUserFromCookies();
 
-  
+  headers();
   return (
     <html lang="en">
       
@@ -24,7 +26,7 @@ const user = await getUserFromCookies();
         <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900 -z-10" />
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)] -z-10" />
 
-        <Navbar user ={user}/>
+        <Navbar />
 
         <main className=" p-4 flex-1 flex  relative z-10">
           {children}
