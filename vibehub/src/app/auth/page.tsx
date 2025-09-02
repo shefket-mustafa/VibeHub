@@ -38,7 +38,7 @@ if(res.ok){
 
 
   return (
-    <section className="w-full max-w-sm mx-auto">
+    <section className="w-full flex flex-col items-center justify-center max-w-sm mx-auto">
       <h1 className="text-3xl font-bold text-center mb-6">Sign in to <span className="text-teal-400">VibeHub</span></h1>
 
       <form
