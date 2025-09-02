@@ -1,7 +1,7 @@
-import LogoutButton from "@/components/LogoutButton";
 import "./globals.css";
-import Link from "next/link";
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import getUserFromCookies from "./lib/getUserFromCookieIdentifier";
 
 export const metadata: Metadata = {
   title: "VibeHub",
@@ -9,11 +9,12 @@ export const metadata: Metadata = {
  
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+const user = await getUserFromCookies();
 
   
   return (
@@ -23,27 +24,7 @@ export default function RootLayout({
         <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900 -z-10" />
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.2),transparent_70%)] -z-10" />
 
-        <header className="border-b border-neutral-800 flex  relative z-10">
-          <nav className="mx-auto max-w-5xl p-4 flex items-center gap-6">
-            <Link href="/" className="font-semibold">
-              VibeHub
-            </Link>
-            <Link href="/feed" className="hover:underline">
-              Feed
-            </Link>
-            <Link href="/profile" className="hover:underline">
-              Profile
-            </Link>
-          </nav>
-
-          <div className="mx-auto max-w-5xl p-4 flex items-center gap-6">
-            <button>
-              Toggle language
-            </button>
-
-          <LogoutButton />
-          </div>
-        </header>
+        <Navbar user ={user}/>
 
         <main className=" p-4 flex-1 flex  relative z-10">
           {children}
