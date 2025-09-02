@@ -17,7 +17,7 @@ type Post = {
     createdAt: string; // ISO
 }
 type ServerPost = {
-  _id: string;  
+  _id: string;
   authorName: string;
   content: string;
   createdAt: string;

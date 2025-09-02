@@ -29,8 +29,11 @@ export default function AuthPage() {
           setError("root", {message: data?.error ?? "Invalid characters!"});
           return
       }
+if(res.ok){
+   router.replace("/feed");
+ router.refresh();
 
-      router.push("/feed")
+}
   }
 
 
